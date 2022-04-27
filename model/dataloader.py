@@ -5,14 +5,13 @@ from torch.utils.data import Dataset
 import os
 import random
 from torchvision import transforms
-import albumentations as A
 
 class BagDataset(Dataset):
   def __init__(self, data_path, subset="train", num_tiles=10, transform=None):
-    ''' 
+    """
     BagDataset for class (label) level bags
     Dir structure: data_path/subset/label/*.png 
-    '''
+    """
     dir_path = os.path.join(data_path, subset)
     class_list = os.listdir(dir_path)
     self.data = []   
@@ -52,10 +51,10 @@ class BagDataset(Dataset):
     return tile_list, label
 
 class FoldBagDataset(Dataset):
-  ''' 
+  """
   BagDataset for class (label) level bags
   Dir structure: data_path/subset/label/*.png 
-  '''
+  """
   def __init__(self, data_path, subset="train", num_tiles=10, transform=None, idx=[]):
     self.transform = transform
     print(subset)
@@ -109,10 +108,10 @@ class FoldBagDataset(Dataset):
     # return tile_path, label
 
 class PatientBagDataset(Dataset):
-  '''
+  """
   BagDataset for the patient level bags data. Takes one pat_id at a time (used in evaluation scripts)
   Dir structure: data_path/label/pat_id/*.png 
-  '''
+  """
   def __init__(self, data_path, label="MSI", pat_id=None, num_tiles=10, transform=None):
     self.transform = transform
     dir_path = os.path.join(data_path, label, pat_id)
@@ -157,10 +156,10 @@ class PatientBagDataset(Dataset):
 
 
 class PatientFoldBagDataset(Dataset):
-  ''' 
+  """
   BagDataset for Patient level indexed data.
   Dir structure: data_path/subset/label/pat_id/*.png 
-  '''
+  """
   def __init__(self, data_path, subset="train", num_tiles=10, transform=None, pat_ids=[]):
     self.transform = transform
     dir_path = os.path.join(data_path, subset)
@@ -215,10 +214,10 @@ class PatientFoldBagDataset(Dataset):
     # return tile_path, label
 
 class IndexPatientBagDataset(Dataset):
-  '''
+  """
   BagDataset for the patient level bags data given tile images names
   Dir structure: data_path/label/pat_id/*.png 
-  '''
+  """
   def __init__(self, data_path, label="MSI", pat_id=None, num_tiles=10, transform=None, tile_names=None):
     self.transform = transform
     dir_path = os.path.join(data_path, label, pat_id)
@@ -260,10 +259,10 @@ class IndexPatientBagDataset(Dataset):
 
 
 def collate_bag_batches(batch):
-  ''' 
+  """
   Collate function to use for Dataloader for BagDataset:
   Returns data batch as a list length #bags/batch of NxCxHxW tensors, N = #tiles/bag
-  '''
+  """
   data = [item[0] for item in batch]
   target = [item[1] for item in batch]
   target = torch.FloatTensor(target)
@@ -273,10 +272,10 @@ def collate_bag_batches(batch):
   return data, target
 
 def collate_patient_bags(batch):
-  ''' 
+  """
   Collate function to use for Dataloader for PAIPBagDataset:
   Returns data batch as a list length #bags/batch of NxCxHxW tensors, N = #tiles/bag
-  '''
+  """
   pat_id = batch[0][0]
   tile_paths = [item[1] for item in batch]
   data = [item[2] for item in batch]

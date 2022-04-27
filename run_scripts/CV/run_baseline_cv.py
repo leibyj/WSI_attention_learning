@@ -16,6 +16,7 @@ import copy
 from model import Baseline_model
 
 start_time = time.time()
+# Arg 1: L2; Arg 2: Model name to save; Arg 3: Fold
 l2 = float(argv[1])
 saved_model = str(argv[2])
 fold = int(argv[3])

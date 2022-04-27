@@ -14,7 +14,7 @@ from dataloader import FoldBagDataset, collate_bag_batches, BagDataset
 
 start_time = time.time()
 
-# clean this up later...
+# Arg 1: L2; Arg 2: Model name to save
 l2 = float(argv[1])
 saved_model = str(argv[2])
 

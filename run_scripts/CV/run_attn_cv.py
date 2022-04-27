@@ -16,7 +16,7 @@ from dataloader import FoldBagDataset, collate_bag_batches #, PatientBagDataset,
 
 start_time = time.time()
 
-# clean this up later...
+# Arg 1: L2; Arg 2: Model name to save; Arg 3: Fold
 l2 = float(argv[1])
 fold = int(argv[2])
 print("Fold:", fold)
