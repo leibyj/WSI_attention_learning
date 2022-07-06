@@ -8,10 +8,9 @@ import sys
 from sys import argv
 import time
 import copy
-import albumentations as A
 
-from model import ATTN_net, ATTN_net_ShuffleNetV2, ATTN_net_res34_late, ATTN_net_res34_con, ContrastiveLoss, ATTN_net_con
-from dataloader import FoldBagDataset, collate_bag_batches #, PatientBagDataset, collate_patient_bags
+from model import ATTN_net, ContrastiveLoss, ATTN_net_con
+from dataloader import FoldBagDataset, collate_bag_batches 
 
 
 start_time = time.time()

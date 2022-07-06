@@ -3,11 +3,9 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from sklearn.metrics import roc_auc_score, f1_score
-from sklearn.model_selection import KFold
 import sys
 from sys import argv
 import time
-import copy
 
 from model import ATTN_net, ATTN_net_con, ContrastiveLoss
 from dataloader import FoldBagDataset, collate_bag_batches, BagDataset 

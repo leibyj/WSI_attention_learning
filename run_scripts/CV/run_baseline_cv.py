@@ -6,7 +6,6 @@ from sklearn.metrics import roc_auc_score, f1_score
 from sklearn.model_selection import KFold
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
-from dataloader import FoldBagDataset, collate_bag_batches
 
 import sys
 from sys import argv
@@ -14,6 +13,7 @@ import time
 import copy
 
 from model import Baseline_model
+from dataloader import FoldBagDataset, collate_bag_batches
 
 start_time = time.time()
 # Arg 1: L2; Arg 2: Model name to save; Arg 3: Fold
