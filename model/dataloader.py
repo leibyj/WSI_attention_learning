@@ -52,7 +52,7 @@ class BagDataset(Dataset):
 
 class FoldBagDataset(Dataset):
   """
-  BagDataset for class (label) level bags
+  BagDataset for class (label) level bags with indexed tiles (folds for CV)
   Dir structure: data_path/subset/label/*.png 
   """
   def __init__(self, data_path, subset="train", num_tiles=10, transform=None, idx=[]):
@@ -109,7 +109,7 @@ class FoldBagDataset(Dataset):
 
 class PatientBagDataset(Dataset):
   """
-  BagDataset for the patient level bags data. Takes one pat_id at a time (used in evaluation scripts)
+  BagDataset for the patient level bags. Takes one pat_id at a time (used in evaluation scripts)
   Dir structure: data_path/label/pat_id/*.png 
   """
   def __init__(self, data_path, label="MSI", pat_id=None, num_tiles=10, transform=None):
@@ -157,7 +157,7 @@ class PatientBagDataset(Dataset):
 
 class PatientFoldBagDataset(Dataset):
   """
-  BagDataset for Patient level indexed data.
+  BagDataset for Patient level indexed bags (folds in CV).
   Dir structure: data_path/subset/label/pat_id/*.png 
   """
   def __init__(self, data_path, subset="train", num_tiles=10, transform=None, pat_ids=[]):
