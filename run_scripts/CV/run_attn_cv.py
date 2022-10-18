@@ -9,7 +9,7 @@ from sys import argv
 import time
 import copy
 
-from model import ATTN_net
+from model import MIL_net
 from dataloader import FoldBagDataset, collate_bag_batches 
 
 
@@ -41,7 +41,7 @@ val_data_loader = DataLoader(val_data, batch_size=12, shuffle=True, collate_fn=c
 
 epochs = 10
 
-model = ATTN_net(device).to(device)
+model = MIL_net().to(device)
 mod_name = str(model).split("(")[0]
 
 saved_model = f"class_{mod_name}_{l2}_fold_{fold}"

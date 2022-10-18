@@ -7,7 +7,7 @@ import sys
 from sys import argv
 import time
 
-from model import ATTN_net, ATTN_net_con, ContrastiveLoss
+from model import MIL_net, ContrastiveLoss
 from dataloader import FoldBagDataset, collate_bag_batches, BagDataset 
 
 
@@ -17,17 +17,15 @@ start_time = time.time()
 l2 = float(argv[1])
 saved_model = str(argv[2])
 
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
-
 
 train_data = BagDataset("/home/jleiby/MSI_pred/data", subset="train", num_tiles=8)
 train_data_loader = DataLoader(train_data, batch_size=12, shuffle=True, collate_fn=collate_bag_batches)
 
 epochs = 10
 
-model = ATTN_net_con().to(device)
+model = MIL_net().to(device)
 opt = optim.SGD(model.parameters(), lr=0.001, weight_decay=l2)
 criterion = nn.BCELoss().to(device)
 contrast = ContrastiveLoss(0.5).to(device)

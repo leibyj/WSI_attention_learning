@@ -7,7 +7,7 @@ import sys
 from sys import argv
 import time
 
-from model import ATTN_net_vgg19, ATTN_net_res18, ATTN_net
+from model import MIL_net
 from dataloader import FoldBagDataset, collate_bag_batches, BagDataset 
 
 start_time = time.time()
@@ -24,7 +24,7 @@ train_data_loader = DataLoader(train_data, batch_size=12, shuffle=True, collate_
 
 epochs = 5
 
-model = ATTN_net().to(device)
+model = MIL_net(contrastive=False).to(device)
 opt = optim.SGD(model.parameters(), lr=0.001, weight_decay=l2)
 criterion = nn.BCELoss().to(device)
 train_loss = []
