@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 from evaluation import get_tile_attns
-from model import ATTN_net
+from model import MIL_net
 from dataloader import PatientBagDataset, collate_patient_bags
 
 from sys import argv

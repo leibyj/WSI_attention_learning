@@ -2,7 +2,7 @@ import torch
 import os
 from sys import argv
 from torch.utils.data import DataLoader
-from model import ATTN_net
+from model import MIL_net
 from dataloader import PatientBagDataset, collate_patient_bags
 from sklearn.metrics import roc_auc_score, f1_score, average_precision_score
 import itertools
